@@ -52,7 +52,7 @@
 #endif
 
 #if DISABLED(PIDTEMPBED)
-  #define BED_CHECK_INTERVAL 1000 // ms between checks in bang-bang control
+  #define BED_CHECK_INTERVAL 5000 // ms between checks in bang-bang control
   #if ENABLED(BED_LIMIT_SWITCHING)
     #define BED_HYSTERESIS 2 // Only disable heating if T>target+BED_HYSTERESIS and enable heating if T>target-BED_HYSTERESIS
   #endif
@@ -104,7 +104,7 @@
   /**
    * As described above, except for the bed (M140/M190/M303).
    */
-  #define WATCH_BED_TEMP_PERIOD 180                // Seconds
+  #define WATCH_BED_TEMP_PERIOD 60                // Seconds
   #define WATCH_BED_TEMP_INCREASE 2               // Degrees Celsius
 #endif
 
@@ -383,7 +383,7 @@
 #define Y_HOME_BUMP_MM 5
 #define Z_HOME_BUMP_MM 2
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
-//#define QUICK_HOME                     // If homing includes X and Y, do a diagonal move initially
+#define QUICK_HOME                       // If homing includes X and Y, do a diagonal move initially
 
 // When G28 is called, this option will make Y home before X
 //#define HOME_Y_BEFORE_X
@@ -533,7 +533,7 @@
 //#define LCD_TIMEOUT_TO_STATUS 15000
 
 // Add an 'M73' G-code to set the current percentage
-// #define LCD_SET_PROGRESS_MANUALLY
+//#define LCD_SET_PROGRESS_MANUALLY
 
 #if ENABLED(SDSUPPORT) || ENABLED(LCD_SET_PROGRESS_MANUALLY)
   //#define LCD_PROGRESS_BAR              // Show a progress bar on HD44780 LCDs for SD printing
@@ -625,9 +625,9 @@
   #if ENABLED(SDCARD_SORT_ALPHA)
     #define SDSORT_LIMIT       40     // Maximum number of sorted items (10-256). Costs 27 bytes each.
     #define FOLDER_SORTING     -1     // -1=above  0=none  1=below
-    #define SDSORT_GCODE       true  // Allow turning sorting on/off with LCD and M34 g-code.
-    #define SDSORT_USES_RAM    false  // Pre-allocate a static array for faster pre-sorting.
-    #define SDSORT_USES_STACK  true  // Prefer the stack for pre-sorting to give back some SRAM. (Negated by next 2 options.)
+    #define SDSORT_GCODE       false  // Allow turning sorting on/off with LCD and M34 g-code.
+    #define SDSORT_USES_RAM    true   // Pre-allocate a static array for faster pre-sorting.
+    #define SDSORT_USES_STACK  true   // Prefer the stack for pre-sorting to give back some SRAM. (Negated by next 2 options.)
     #define SDSORT_CACHE_NAMES false  // Keep sorted items in RAM longer for speedy performance. Most expensive option.
     #define SDSORT_DYNAMIC_RAM false  // Use dynamic allocation (within SD menus). Least expensive option. Set SDSORT_LIMIT before use!
     #define SDSORT_CACHE_VFATS 2      // Maximum number of 13-byte VFAT entries to use for sorting.
@@ -745,7 +745,7 @@
 #if ENABLED(BABYSTEPPING)
   //#define BABYSTEP_XY              // Also enable X/Y Babystepping. Not supported on DELTA!
   #define BABYSTEP_INVERT_Z false    // Change if Z babysteps should go the other way
-  #define BABYSTEP_MULTIPLICATOR 1   // Babysteps are very small. Increase for faster motion.
+  #define BABYSTEP_MULTIPLICATOR 5   // Babysteps are very small. Increase for faster motion.
   //#define BABYSTEP_ZPROBE_OFFSET   // Enable to combine M851 and Babystepping
   #define DOUBLECLICK_FOR_Z_BABYSTEPPING // Double-click on the Status Screen for Z Babystepping.
   #define DOUBLECLICK_MAX_INTERVAL 1250 // Maximum interval between clicks, in milliseconds.
@@ -811,7 +811,7 @@
 #endif
 
 // Moves (or segments) with fewer steps than this will be joined with the next move
-#define MIN_STEPS_PER_SEGMENT 2
+#define MIN_STEPS_PER_SEGMENT 6
 
 /**
  * Minimum delay after setting the stepper DIR (in ns)
@@ -822,8 +822,6 @@
  *   650 : Minimum for DRV8825 drivers
  *  1500 : Minimum for TB6600 drivers (guess, no info in datasheet)
  * 15000 : Minimum for TB6560 drivers (guess, no info in datasheet)
- *
- * Override the default value based on the driver type set in Configuration.h.
  */
 //#define MINIMUM_STEPPER_DIR_DELAY 650
 
@@ -835,8 +833,6 @@
  *   2 : Minimum for DRV8825 stepper drivers
  *   3 : Minimum for TB6600 stepper drivers
  *  30 : Minimum for TB6560 stepper drivers
- *
- * Override the default value based on the driver type set in Configuration.h.
  */
 //#define MINIMUM_STEPPER_PULSE 2
 
@@ -849,8 +845,6 @@
  *  150000 : Maximum for TB6600 stepper driver
  *  130000 : Maximum for LV8729 stepper driver
  *   15000 : Maximum for TB6560 stepper driver
- *
- * Override the default value based on the driver type set in Configuration.h.
  */
 //#define MAXIMUM_STEPPER_RATE 250000
 
@@ -914,7 +908,7 @@
 // enter the serial receive buffer, so they cannot be blocked.
 // Currently handles M108, M112, M410
 // Does not work on boards using AT90USB (USBCON) processors!
-//#define EMERGENCY_PARSER
+#define EMERGENCY_PARSER
 
 // Bad Serial-connections can miss a received command by sending an 'ok'
 // Therefore some clients abort after 30 seconds in a timeout.
@@ -923,7 +917,7 @@
 //#define NO_TIMEOUTS 1000 // Milliseconds
 
 // Some clients will have this feature soon. This could make the NO_TIMEOUTS unnecessary.
-//#define ADVANCED_OK
+#define ADVANCED_OK
 
 // @section extras
 
@@ -978,7 +972,7 @@
 #define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
   #define PAUSE_PARK_RETRACT_FEEDRATE         60  // (mm/s) Initial retract feedrate.
-  #define PAUSE_PARK_RETRACT_LENGTH            3  // (mm) Initial retract.
+  #define PAUSE_PARK_RETRACT_LENGTH            4  // (mm) Initial retract.
                                                   // This short retract is done immediately, before parking the nozzle.
   #define FILAMENT_CHANGE_UNLOAD_FEEDRATE     10  // (mm/s) Unload filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_UNLOAD_ACCEL        25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
@@ -1002,7 +996,7 @@
                                                   //   until extrusion is consistent, and to purge old filament.
 
                                                   // Filament Unload does a Retract, Delay, and Purge first:
-  #define FILAMENT_UNLOAD_RETRACT_LENGTH      13  // (mm) Unload initial retract length.
+  #define FILAMENT_UNLOAD_RETRACT_LENGTH       4  // (mm) Unload initial retract length.
   #define FILAMENT_UNLOAD_DELAY             5000  // (ms) Delay for the filament to cool after retract.
   #define FILAMENT_UNLOAD_PURGE_LENGTH         8  // (mm) An unretract is done, then this length is purged.
 
@@ -1010,8 +1004,8 @@
   #define FILAMENT_CHANGE_ALERT_BEEPS         10  // Number of alert beeps to play when a response is needed.
   #define PAUSE_PARK_NO_STEPPER_TIMEOUT           // Enable for XYZ steppers to stay powered on during filament change.
 
-  #define PARK_HEAD_ON_PAUSE                    // Park the nozzle during pause and filament change.
-  //#define HOME_BEFORE_FILAMENT_CHANGE           // Ensure homing has been completed prior to parking for filament change
+  #define PARK_HEAD_ON_PAUSE                      // Park the nozzle during pause and filament change.
+  #define HOME_BEFORE_FILAMENT_CHANGE             // Ensure homing has been completed prior to parking for filament change
 
   //#define FILAMENT_LOAD_UNLOAD_GCODES           // Add M701/M702 Load/Unload G-codes, plus Load/Unload in the LCD Prepare menu.
   //#define FILAMENT_UNLOAD_ALL_EXTRUDERS         // Allow M702 to unload all extruders above a minimum target temp (as set by M302)
@@ -1071,7 +1065,7 @@
   #define E4_SENSE_RESISTOR   91
   #define E4_MICROSTEPS       16
 
-#endif // TMC26X
+#endif
 
 // @section tmc_smart
 
@@ -1299,7 +1293,7 @@
   #define E4_OVERCURRENT  2000
   #define E4_STALLCURRENT 1500
 
-#endif // L6470
+#endif
 
 /**
  * TWI/I2C BUS
