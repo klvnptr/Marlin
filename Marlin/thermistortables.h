@@ -104,6 +104,9 @@
 #if ANY_THERMISTOR_IS(66) // DyzeDesign 500°C Thermistor
   #include "thermistortable_66.h"
 #endif
+#if ANY_THERMISTOR_IS(67) // Slice Engineering 450C
+  #include "thermistortable_67.h"
+#endif
 #if ANY_THERMISTOR_IS(12) // 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup) (calibrated for Makibox hot bed)
   #include "thermistortable_12.h"
 #endif
