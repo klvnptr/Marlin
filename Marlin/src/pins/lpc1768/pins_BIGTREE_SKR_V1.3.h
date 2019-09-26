@@ -83,13 +83,12 @@
 //   #define X_CS_PIN         P1_01
 // #endif
 
-#define X_STEP_PIN         P0_22
-#define X_DIR_PIN          P2_11
-#define X_ENABLE_PIN       P0_21
+#define X_STEP_PIN         P0_01
+#define X_DIR_PIN          P0_00
+#define X_ENABLE_PIN       P0_10
 #ifndef X_CS_PIN
-  #define X_CS_PIN         P1_10
+  #define X_CS_PIN         P1_01
 #endif
-
 
 // #define Z_STEP_PIN         P0_22
 // #define Z_DIR_PIN          P2_11
