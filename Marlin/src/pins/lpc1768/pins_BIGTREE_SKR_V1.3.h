@@ -80,7 +80,7 @@
 #define Z_DIR_PIN          P2_11
 #define Z_ENABLE_PIN       P0_21
 #ifndef Z_CS_PIN
-  #define Z_CS_PIN         P1_10
+  #define Z_CS_PIN         P0_01 // P1_10
 #endif
 
 #define E0_STEP_PIN        P2_13
