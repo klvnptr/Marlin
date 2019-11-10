@@ -142,9 +142,9 @@ namespace Language_es {
   PROGMEM Language_Str MSG_IDEX_MODE_DUPLICATE             = _UxGT("Duplicar");
   PROGMEM Language_Str MSG_IDEX_MODE_MIRRORED_COPY         = _UxGT("Copia Reflejada");
   PROGMEM Language_Str MSG_IDEX_MODE_FULL_CTRL             = _UxGT("Control Total");
-  PROGMEM Language_Str MSG_X_OFFSET                        = _UxGT("2ª Boquilla X");
-  PROGMEM Language_Str MSG_Y_OFFSET                        = _UxGT("2ª Boquilla Y");
-  PROGMEM Language_Str MSG_Z_OFFSET                        = _UxGT("2ª Boquilla Z");
+  PROGMEM Language_Str MSG_HOTEND_OFFSET_X                 = _UxGT("2ª Boquilla X");
+  PROGMEM Language_Str MSG_HOTEND_OFFSET_Y                 = _UxGT("2ª Boquilla Y");
+  PROGMEM Language_Str MSG_HOTEND_OFFSET_Z                 = _UxGT("2ª Boquilla Z");
   PROGMEM Language_Str MSG_UBL_DOING_G29                   = _UxGT("Hacer G29");
   PROGMEM Language_Str MSG_UBL_TOOLS                       = _UxGT("Herramientas UBL");
   PROGMEM Language_Str MSG_UBL_LEVEL_BED                   = _UxGT("Nivel.Cama.Uni.(UBL)");
@@ -450,9 +450,9 @@ namespace Language_es {
   PROGMEM Language_Str MSG_HEATING_FAILED_LCD_BED          = _UxGT("Calent. cama fallido");
   PROGMEM Language_Str MSG_HEATING_FAILED_LCD_CHAMBER      = _UxGT("Calent. Cám. fallido");
   PROGMEM Language_Str MSG_ERR_REDUNDANT_TEMP              = _UxGT("Err: TEMP. REDUN.");
-  PROGMEM Language_Str MSG_THERMAL_RUNAWAY                 = _UxGT("ESCAPE TERMICO");
-  PROGMEM Language_Str MSG_THERMAL_RUNAWAY_BED             = _UxGT("ESC. TERMICO CAMA");
-  PROGMEM Language_Str MSG_THERMAL_RUNAWAY_CHAMBER         = _UxGT("ESC. TERMICO CAMARA");
+  PROGMEM Language_Str MSG_THERMAL_RUNAWAY                 = _UxGT("FUGA TÉRMICA");
+  PROGMEM Language_Str MSG_THERMAL_RUNAWAY_BED             = _UxGT("FUGA TÉRMICA CAMA");
+  PROGMEM Language_Str MSG_THERMAL_RUNAWAY_CHAMBER         = _UxGT("FUGA TÉRMICA CAMARA");
   PROGMEM Language_Str MSG_ERR_MAXTEMP                     = _UxGT("Err:TEMP. MÁX");
   PROGMEM Language_Str MSG_ERR_MINTEMP                     = _UxGT("Err:TEMP. MIN");
   PROGMEM Language_Str MSG_ERR_MAXTEMP_BED                 = _UxGT("Err:TEMP. MÁX CAMA");
